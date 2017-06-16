@@ -1,8 +1,8 @@
 import os
+
 import basic.BasicObj as bo
 import tools.zh_wiki
-import jieba
-import pymysql
+import basic.DB as db
 
 zh2Hans_keys = tools.zh_wiki.zh2Hans.keys()
 zh2Hant_keys = tools.zh_wiki.zh2Hant.keys()
@@ -23,6 +23,10 @@ for file_name in files_name_list[:]:
         assFile = bo.AssFile(ass_file_location, file_name)
         ass_file_list.append(assFile)
 
+rid = 0
+
+dialogue_list = []
+
 for ass_file in ass_file_list:
     file = open(ass_file.file_location, 'r', encoding="utf-16")
     lines = tuple(file)
@@ -38,11 +42,18 @@ for ass_file in ass_file_list:
                     dialogue_s.append(tools.zh_wiki.zh2Hant.get(hanzi))
                 else:
                     dialogue_s.append(hanzi)
-            seg_list = jieba.lcut("".join(dialogue_s), cut_all=False)
-            for seg in seg_list:
-                if word_dict.get(seg) is None:
-                    word_dict[seg] = 1
-                else:
-                    word_dict[seg] += 1
+            rid += 1
+            text = "".join(dialogue_s)
+            start_time = current_line.split(",")[1]
+            end_time = current_line.split(",")[2]
+            # print(rid)
+            # print(text)
+            # print(start_time)
+            # print(end_time)
+            # print(raw_dialogue_s)
+            file_name = ass_file.file_location.split("\\")[-1].replace(".ass", "")
+            dialogue_list.append(
+                bo.Dialogue(id=rid, text=text, start_time=start_time, end_time=end_time, raw_text=raw_dialogue_s,
+                            file_name=file_name))
 
-print(word_dict)
+db.save_obj(dialogue_list)
