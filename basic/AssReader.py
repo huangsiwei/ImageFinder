@@ -43,7 +43,7 @@ for ass_file in ass_file_list:
                 else:
                     dialogue_s.append(hanzi)
             rid += 1
-            text = "".join(dialogue_s)
+            simple_text = "".join(dialogue_s)
             start_time = current_line.split(",")[1]
             end_time = current_line.split(",")[2]
             # print(rid)
@@ -53,7 +53,7 @@ for ass_file in ass_file_list:
             # print(raw_dialogue_s)
             file_name = ass_file.file_location.split("\\")[-1].replace(".ass", "")
             dialogue_list.append(
-                bo.Dialogue(id=rid, text=text, start_time=start_time, end_time=end_time, raw_text=raw_dialogue_s,
+                bo.Dialogue(simple_text=simple_text, start_time=start_time, end_time=end_time, raw_text=raw_dialogue_s,
                             file_name=file_name))
 
 db.save_obj(dialogue_list)
