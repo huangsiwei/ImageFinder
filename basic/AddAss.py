@@ -1,13 +1,24 @@
 import os
-import sys
+import basic.BasicObj
 
-import PIL
 from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
+from sqlalchemy import *
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 
 img_dir = "C:\PycharmProjects\ImageFinder\img"
 raw_img_dir = "C:\PycharmProjects\ImageFinder\\raw_img"
+
+engine = create_engine('mysql+pymysql://root:test@localhost:3306/imagefinder?charset=utf8', echo=True, encoding='utf-8')
+print(engine)
+Base = declarative_base()
+
+DBSession = sessionmaker(bind=engine)
+session = DBSession()
+
+dialogue_list = session.query(basic.BasicObj.Dialogue).all()
 
 
 def add_ass(image_uuid, simple_text):
@@ -23,6 +34,6 @@ raw_img_list = os.listdir(raw_img_dir)
 
 for raw_img in raw_img_list:
     print(raw_img)
-    raw_img.replace(".jpg", "")
-
-    pass
+    raw_img_id = raw_img.replace(".jpg", "")
+    dialogue = [x for x in dialogue_list if x.uuid == raw_img_id][0]
+    add_ass(raw_img_id, dialogue.simple_text)
