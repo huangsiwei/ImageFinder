@@ -7,7 +7,7 @@ import basic.DB as db
 zh2Hans_keys = tools.zh_wiki.zh2Hans.keys()
 zh2Hant_keys = tools.zh_wiki.zh2Hant.keys()
 
-root_dir = "F:\MOV\银魂\銀魂 第一季(1-201)\\31-45\\"
+root_dir = "F:\MOV\银魂\銀魂第一季(1-201)\\"
 
 dialogue_list = []
 
@@ -23,7 +23,7 @@ for file_name in files_name_list[:]:
         assFile = bo.AssFile(ass_file_location, file_name)
         ass_file_list.append(assFile)
 
-rid = 0
+rid = 16411
 
 dialogue_list = []
 
@@ -46,14 +46,10 @@ for ass_file in ass_file_list:
             simple_text = "".join(dialogue_s)
             start_time = current_line.split(",")[1]
             end_time = current_line.split(",")[2]
-            # print(rid)
-            # print(text)
-            # print(start_time)
-            # print(end_time)
-            # print(raw_dialogue_s)
             file_name = ass_file.file_location.split("\\")[-1].replace(".ass", "")
             dialogue_list.append(
-                bo.Dialogue(simple_text=simple_text, start_time=start_time, end_time=end_time, raw_text=raw_dialogue_s,
+                bo.Dialogue(id=rid, simple_text=simple_text, start_time=start_time, end_time=end_time,
+                            raw_text=raw_dialogue_s,
                             file_name=file_name))
 
 db.save_obj(dialogue_list)
