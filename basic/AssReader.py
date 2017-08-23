@@ -8,12 +8,11 @@ zh2Hant_keys = tools.zh_wiki.zh2Hant.keys()
 
 
 class AssReader:
-    ass_file_list = []
-
     def __init__(self):
-        root_dir = "F:\MOV\银魂\銀魂第一季(1-201)\\"
+        root_dir = "/Users/huangsiwei/PycharmProjects/ImageFinder/assfile/"
         files_name_list = os.listdir(root_dir)
         self.dialogue_list = []
+        self.ass_file_list = []
         for file_name in files_name_list[:]:
             if file_name.endswith(".ass"):
                 ass_file_location = root_dir + file_name
