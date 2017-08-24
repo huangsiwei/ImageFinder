@@ -20,7 +20,6 @@ class AssReader:
                 self.ass_file_list.append(assFile)
 
     def generate_dialogue_list(self):
-        rid = 16411
         for ass_file in self.ass_file_list:
             file = open(ass_file.file_location, 'r', encoding="utf-16")
             lines = tuple(file)
@@ -36,7 +35,6 @@ class AssReader:
                             dialogue_s.append(tools.zh_wiki.zh2Hant.get(hanzi))
                         else:
                             dialogue_s.append(hanzi)
-                    rid += 1
                     simple_text = "".join(dialogue_s)
                     start_time = current_line.split(",")[1]
                     end_time = current_line.split(",")[2]

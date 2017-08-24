@@ -1,13 +1,8 @@
 from sqlalchemy import *
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-import uuid
 
 Base = declarative_base()
-
-
-def generate_uuid():
-    return str(uuid.uuid4())
 
 
 class DataBase:
@@ -24,10 +19,6 @@ class DataBase:
         DB_Session = sessionmaker(bind=self.engine)
         session = DB_Session()
         self.session = session
-
-
-    def init_database(self):
-        Base.metadata.create_all(self.engine)
 
     def save_obj(self, objs):
         for obj in objs:

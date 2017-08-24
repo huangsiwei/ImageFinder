@@ -22,7 +22,7 @@ class ScreenShot:
 
 class Dialogue(Base):
     __tablename__ = "dialogue"
-    uuid = Column(String(100), name="uuid", primary_key=True, default=generate_uuid, autoincrement=True)
+    uuid = Column(String(100), name="uuid", primary_key=True, default=generate_uuid)
     simple_text = Column(String(1000))
     start_time = Column(String(100))
     end_time = Column(String(100))
