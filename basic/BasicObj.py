@@ -28,6 +28,7 @@ class Dialogue(Base):
     end_time = Column(String(100))
     raw_text = Column(String(1000))
     file_name = Column(String(1000))
+    has_image = Column(Boolean, default=False)
     #
     # def __init__(self, id, simple_text, start_time, end_time, raw_text, file_name):
     #     self.id = id

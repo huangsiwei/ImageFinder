@@ -38,9 +38,9 @@ class AssReader:
                     simple_text = "".join(dialogue_s)
                     start_time = current_line.split(",")[1]
                     end_time = current_line.split(",")[2]
-                    file_name = ass_file.file_location.split("\\")[-1].replace(".ass", "")
+                    file_name = ass_file.file_location.split(os.sep)[-1].replace(".ass", "")
                     self.dialogue_list.append(
                         bo.Dialogue(simple_text=simple_text, start_time=start_time, end_time=end_time,
                                     raw_text=raw_dialogue_s,
-                                    file_name=file_name))
+                                    file_name=file_name, has_image=False))
         return self.dialogue_list
