@@ -24,3 +24,7 @@ class DataBase:
         for obj in objs:
             self.session.add(obj)
         self.session.commit()
+
+    def find_all(self, obj):
+        result_list = self.session.query(obj).all()
+        return result_list
