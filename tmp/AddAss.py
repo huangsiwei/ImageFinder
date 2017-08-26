@@ -26,13 +26,13 @@ def add_ass(image_uuid, simple_text):
     (img_x, img_y) = img.size
     ttfont = ImageFont.truetype('C:\Windows\Fonts\SIMLI.TTF', int(img_y / 18))
     draw = ImageDraw.Draw(img)
-    x_offset = int(img_x)/2 - int(img_y / 18) * (len(simple_text)/2)
+    x_offset = int(img_x) / 2 - int(img_y / 18) * (len(simple_text) / 2)
     draw.text((x_offset + 1, img_y - int((img_y * 2) / 20)), simple_text, (0, 0, 0), font=ttfont)
     draw.text((x_offset, img_y - int((img_y * 2) / 20) + 1), simple_text, (0, 0, 0), font=ttfont)
     draw.text((x_offset + 1, img_y - int((img_y * 2) / 20) + 1), simple_text, (0, 0, 0), font=ttfont)
     draw.text((x_offset - 1, img_y - int((img_y * 2) / 20) - 1), simple_text, (0, 0, 0), font=ttfont)
     draw.text((x_offset, img_y - int((img_y * 2) / 20)), simple_text, (255, 255, 255), font=ttfont)
-    img.save(img_dir + '\\' + image_uuid + '.jpg', 'jpeg')
+    img.save(img_dir + os.sep + image_uuid + '.jpg', 'jpeg')
 
 
 raw_img_list = os.listdir(raw_img_dir)

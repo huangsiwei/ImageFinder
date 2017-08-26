@@ -43,7 +43,7 @@ class ImageShot:
 
     # TODO: 完成后需要更新数据库标记已经添加字幕
     def add_ass_to_image(self):
-        for dialogue in self.dialogue_list_to_shot:
+        for dialogue in self.image_list_to_add_ass:
             img = Image.open("D:\\raw_img\\{}.jpg".format(dialogue.uuid))
             (img_x, img_y) = img.size
             ttfont = ImageFont.truetype('C:\Windows\Fonts\SIMLI.TTF', int(img_y / 18))
@@ -55,4 +55,4 @@ class ImageShot:
             draw.text((x_offset - 1, img_y - int((img_y * 2) / 20) - 1), dialogue.simple_text, (0, 0, 0), font=ttfont)
             draw.text((x_offset, img_y - int((img_y * 2) / 20)), dialogue.simple_text, (255, 255, 255), font=ttfont)
             img.save(img_dir + os.sep + dialogue.uuid + '.jpg', 'jpeg')
-            pass
+

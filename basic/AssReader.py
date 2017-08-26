@@ -3,21 +3,24 @@ import os
 import basic.BasicObj as bo
 import tools.zh_wiki
 
+from utils.Config import *
+
 zh2Hans_keys = tools.zh_wiki.zh2Hans.keys()
 zh2Hant_keys = tools.zh_wiki.zh2Hant.keys()
 
 
 class AssReader:
     def __init__(self):
-        root_dir = "/Users/huangsiwei/PycharmProjects/ImageFinder/assfile/"
+        current_config = Configuration().current_config()
+        root_dir = current_config.get("ass_file_dir")
         files_name_list = os.listdir(root_dir)
         self.dialogue_list = []
         self.ass_file_list = []
         for file_name in files_name_list[:]:
             if file_name.endswith(".ass"):
                 ass_file_location = root_dir + file_name
-                assFile = bo.AssFile(ass_file_location, file_name)
-                self.ass_file_list.append(assFile)
+                ass_file = bo.AssFile(ass_file_location, file_name)
+                self.ass_file_list.append(ass_file)
 
     def generate_dialogue_list(self):
         for ass_file in self.ass_file_list:

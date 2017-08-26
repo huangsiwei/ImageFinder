@@ -29,12 +29,3 @@ class Dialogue(Base):
     raw_text = Column(String(1000))
     file_name = Column(String(1000))
     has_image = Column(Boolean, default=False)
-    #
-    # def __init__(self, id, simple_text, start_time, end_time, raw_text, file_name):
-    #     self.id = id
-    #     self.uuid = generate_uuid()
-    #     self.simple_text = simple_text
-    #     self.start_time = start_time
-    #     self.end_time = end_time
-    #     self.raw_text = raw_text
-    #     self.file_name = file_name
