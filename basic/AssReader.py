@@ -5,6 +5,8 @@ import tools.zh_wiki
 
 from utils.Config import *
 
+import hashlib
+
 zh2Hans_keys = tools.zh_wiki.zh2Hans.keys()
 zh2Hant_keys = tools.zh_wiki.zh2Hant.keys()
 
@@ -45,5 +47,6 @@ class AssReader:
                     self.dialogue_list.append(
                         bo.Dialogue(simple_text=simple_text, start_time=start_time, end_time=end_time,
                                     raw_text=raw_dialogue_s,
-                                    file_name=file_name, has_image=False))
+                                    file_name=file_name, has_image=False, ass_added=False,
+                                    uid=bo.custom_md5(simple_text, start_time, end_time, raw_dialogue_s, file_name)))
         return self.dialogue_list

@@ -9,9 +9,9 @@ class Configuration:
         mov_dir="/Users/huangsiwei/PycharmProjects/ImageFinder/mov/"
     )
 
-    WINDOWS_CONFIG = {
-
-    }
+    WINDOWS_CONFIG = dict(
+        ass_file_dir="F:\MOV\银魂\銀魂第一季(1-201)\\1-15\\"
+    )
 
     def current_config(self):
         if os.name == "posix":
