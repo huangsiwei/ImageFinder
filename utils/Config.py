@@ -10,7 +10,9 @@ class Configuration:
     )
 
     WINDOWS_CONFIG = dict(
-        ass_file_dir="F:\MOV\银魂\銀魂第一季(1-201)\\1-15\\"
+        ass_file_dir="F:\MOV\银魂\銀魂第一季(1-201)\\",
+        mov_dir="F:\MOV\银魂\銀魂第一季(1-201)\\",
+        raw_image_dir="D:\\raw_img\\"
     )
 
     def current_config(self):

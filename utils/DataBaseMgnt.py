@@ -20,9 +20,13 @@ class DataBase:
         session = DB_Session()
         self.session = session
 
-    def save_obj(self, objs):
+    def save_objs(self, objs):
         for obj in objs:
             self.session.add(obj)
+        self.session.commit()
+
+    def update_obj(self, obj):
+        self.session.add(obj)
         self.session.commit()
 
     def find_all(self, obj):
