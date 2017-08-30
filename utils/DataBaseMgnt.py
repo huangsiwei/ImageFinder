@@ -32,3 +32,6 @@ class DataBase:
     def find_all(self, obj):
         result_list = self.session.query(obj).all()
         return result_list
+
+    def query(self, obj, attr, value):
+        return self.session.query(obj).filter(attr == value)

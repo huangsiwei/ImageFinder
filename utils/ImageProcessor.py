@@ -7,4 +7,4 @@ class ImageProcessor:
 
 
 a = ImageProcessor()
-a.image_shot.shot_image()
+a.image_shot.add_ass_to_image()
